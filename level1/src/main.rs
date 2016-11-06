@@ -1,3 +1,7 @@
+#![feature(alloc_system)]
+
+extern crate alloc_system;
+
 use std::io;
 
 fn calculate_check(guess:&String) -> u64 {
