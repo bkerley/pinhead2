@@ -11,7 +11,11 @@
     "start": "brunch watch --server",
     "build": "brunch build --production"
   },
-  "dependencies": {},
+  "dependencies": {
+    "coffee-script-brunch": "^2.1.0",
+    "html-pages-brunch": "^2.4.0",
+    "jquery": "^3.1.1"
+  },
   "devDependencies": {
     "brunch": "^2.0.0",
     "javascript-brunch": "^2.0.0",

@@ -1,3 +1,1 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // do your setup here
-});
+module.exports = require("game.coffee")
