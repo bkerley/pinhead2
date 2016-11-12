@@ -1,0 +1,45 @@
+$amber: #fc8
+$disabled: #a88
+$font_stack: "Ubuntu Mono"
+
+body
+  background-color: black
+  color: $amber
+  font-family: $font_stack
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-content: space-between
+
+button
+  border: 1px solid $amber
+  border-radius: 4px
+  padding: 4px
+  background-color: black
+  color: $amber
+  font-family: $font_stack
+  &:disabled
+    color: $disabled
+    border-color: $disabled
+
+th, td
+  text-align: right
+
+section
+  &#scoreboard
+    width: 100%
+    margin-bottom: 10px
+  &#posters
+    width: 40%
+  &#upgrades
+    width: 60%
+
+  &#progress
+    width: 100%
+    border: 1px solid $amber
+    div
+      width: 0%
+      background-color: $amber
+      color: black
+      overflow: clip
+      text-align: center

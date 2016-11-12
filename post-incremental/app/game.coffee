@@ -1,4 +1,5 @@
 $ = require('jquery')
+md5 = require('yamd5')
 
 disp = (num, factor = 100, divisor = 100) ->
   Math.round(num * factor) / divisor
@@ -35,7 +36,8 @@ class PosterView
     baserate = @row.data("baserate")
     basecost = @row.data("basecost")
 
-    @row.find("button").click(@buy.bind(this))
+    @button = @row.find("button")
+    @button.click(@buy.bind(this))
 
     @poster = new Poster name, baserate, basecost
     @update()
@@ -46,9 +48,15 @@ class PosterView
 
     @scoreboard.spend(@poster.cost)
     @poster.buy()
+    @scoreboard.poke()
     @update()
 
   tick: (delta) ->
+    if @scoreboard.canSpend @poster.cost
+      @button.prop 'disabled', false
+    else
+      @button.prop 'disabled', true
+
     @poster.tick(delta)
 
   update: () ->
@@ -87,10 +95,40 @@ class UpgradeView
     @target.poster.rate *= @multiplier
     @target.update()
     @button.prop("disabled", true)
+    @button.text("bought")
     @bought = true
+
+  tick: (delta) ->
+    if !@bought && @scoreboard.canSpend(@cost)
+      @button.prop 'disabled', false
+    else
+      @button.prop 'disabled', true
+
+    return 0
 
   update: () ->
     @costField.text disp @cost
+
+class ProgressView
+  constructor: (@scoreboard, @section) ->
+    @bar = @section.find('div')
+
+  tick: (delta) ->
+    posterCount = 0
+    for poster in @scoreboard.posters
+      posterCount += poster.count
+
+    posterCount = 219 if posterCount > 219
+
+    @bar.css('width', "#{posterCount/2.19}%")
+    if posterCount < 219
+      @bar.text("#{posterCount} / 219")
+    else
+      dig = md5.hashStr(@scoreboard.notez.join(""))
+      @bar.text("send #{dig} to udp port 1337 for the next level")
+
+
+    return 0
 
 class Scoreboard
   constructor: () ->
@@ -100,11 +138,15 @@ class Scoreboard
       new PosterView(this, $(row))
     @posters = for view in @posterViews
       view.poster
+    @tickList = @posterViews
 
     @upgradeViews = for row in $("#upgrades tbody tr")
       new UpgradeView(this, $(row))
+    @tickList.push @upgradeViews...
 
-    @tickList = @posterViews
+
+    @progressView = new ProgressView(this, $('section#progress'))
+    @tickList.push @progressView
 
     @lastTick = Date.now()
 
@@ -112,6 +154,9 @@ class Scoreboard
 
     @postsCtr = $("#posts_ctr")
     @postsDeltCtr = $("#posts_delt_ctr")
+
+    @notes = "FaidajEunVosOkKafocVeozCyulciogsOasIkUfnaffyuryesdagdavWuAcasGohutBuOcvacAlRickJeajenwiWowisJoshtefNavyejyednivElOafyidDiOcyunAvepAvOridlumocEfOoxyovDerEctApnabnopAgDied7opufElovtyroadoadUlgyahochimhaQuejyin7ovWyawOyll4"
+    @notez = []
 
   tick: () ->
     curTick = Date.now()
@@ -133,6 +178,12 @@ class Scoreboard
 
   spend: (amount) ->
     @posts -= amount
+
+  poke: () ->
+    posterCount = 0
+    for poster in @posters
+      posterCount += poster.count
+    @notez[posterCount] = @notes[((posterCount * 69) + 32) % 219]
 
   getPosterView: (targetName) ->
     for view in @posterViews when view.poster.name is targetName
