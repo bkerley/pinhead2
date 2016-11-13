@@ -63,7 +63,7 @@ class PosterView
     @rateField.text disp @poster.rate
     @costField.text disp @poster.cost
     @haveField.text disp @poster.count
-    @valueField.text disp(@poster.rate / @poster.cost, 1000000, 1)
+    @valueField.text disp(@poster.rate * @poster.count)
 
 class UpgradeView
   constructor: (@scoreboard, @row) ->
