@@ -1,17 +1,17 @@
-CC = clang
-CFLAGS = -Wall -g -arch x86_32
+CC = gcc
+CFLAGS = -Wall -g -m32
 
-LD = clang
-LDFLAGS = -Wall -arch x86_32
+LD = gcc
+LDFLAGS = -Wall -m32
 
-CT = clang
-CTFLAGS = -S -arch x86_32
+CT = gcc
+CTFLAGS = -S -m32
 
 RM = rm
 
 RUBY = ruby
 
-OBJS = main.o check.o
+OBJS = check.o main.o
 PROG = level2
 
 all: $(PROG)

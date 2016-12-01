@@ -12,10 +12,10 @@ int main() {
 
   fgets(code, CODE_LEN - 1, stdin);
 
-  uint64_t result = check(code);
-  uint64_t nextport = (result % 4096) + 4096;
+  uint32_t result = check(code);
+  uint32_t nextport = (result % 8191) + 4096;
 
-  printf("congratulations! %llu\n", nextport);
+  printf("congratulations! %u\n", nextport);
 
   return 0;
 }
