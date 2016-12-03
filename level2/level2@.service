@@ -1,0 +1,9 @@
+[Unit]
+Description=level2 puzzlebox challenge
+After=local-fs.target
+
+[Service]
+User=pi
+Group=pi
+ExecStart="qemu-i386-static ./level2"
+StandardInput=socket

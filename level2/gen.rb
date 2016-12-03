@@ -13,7 +13,7 @@ File.open('check.c', 'w') do |c|
     running = b
 
     4.times.each do
-      operation = %i{+ - %}.shuffle.first
+      operation = %i{+ -}.shuffle.first
       operand = rand(2**4) + 1
       result = running.send operation, operand
       c.puts "  // #{running} #{operation} #{operand} => #{result}"

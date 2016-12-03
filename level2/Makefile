@@ -1,8 +1,8 @@
 CC = gcc
-CFLAGS = -Wall -g -m32
+CFLAGS = -Wall -g -m32 -static
 
 LD = gcc
-LDFLAGS = -Wall -m32
+LDFLAGS = -Wall -m32 -static
 
 CT = gcc
 CTFLAGS = -S -m32

@@ -1,0 +1,9 @@
+[Unit]
+Description=level2 puzzlebox challenge
+
+[Socket]
+ListenStream=0.0.0.0:1338
+Accept=true
+
+[Install]
+WantedBy=sockets.target
