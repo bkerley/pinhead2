@@ -1,4 +1,5 @@
 use std::net::UdpSocket;
+use std::process::Command;
 
 fn main() {
     let socket = UdpSocket::bind("0.0.0.0:1337").
@@ -22,8 +23,25 @@ fn main() {
                            51, 53, 50, 57, 51, 54];
 
         if buf == expectation {
+            let mut enabler = Command::new("sudo").
+                arg("systemctl").
+                arg("enable").
+                arg("level2.socket").
+                spawn().
+                expect("failed to enable level2");
+
+            let mut starter = Command::new("sudo").
+                arg("systemctl").
+                arg("start").
+                arg("level2.socket").
+                spawn().
+                expect("failed to start level2");
+
+            enabler.wait().expect("failed to enable level2");
+            starter.wait().expect("failed to start level2");
+
             let reply =
-                "nice! http://10.219.2.1:1338 should be available shortly".
+                "nice! http://10.219.2.1/level2 is running on tcp port 1338".
                 as_bytes();
 
             socket.
