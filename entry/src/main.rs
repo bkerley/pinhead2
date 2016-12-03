@@ -18,5 +18,5 @@ fn mount() -> Mount {
 }
 
 fn main() {
-    Iron::new(mount()).http("localhost:8080").unwrap();
+    Iron::new(mount()).http("0.0.0.0:8080").unwrap();
 }
