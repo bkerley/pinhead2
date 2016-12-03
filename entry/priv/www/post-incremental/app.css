@@ -1,0 +1,45 @@
+body {
+  background-color: black;
+  color: #fc8;
+  font-family: "Ubuntu Mono";
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between; }
+
+button {
+  border: 1px solid #fc8;
+  border-radius: 4px;
+  padding: 4px;
+  background-color: black;
+  color: #fc8;
+  font-family: "Ubuntu Mono"; }
+  button:disabled {
+    color: #a88;
+    border-color: #a88; }
+
+th, td {
+  text-align: right; }
+
+section#scoreboard {
+  width: 100%;
+  margin-bottom: 10px; }
+
+section#posters {
+  width: 40%; }
+
+section#upgrades {
+  width: 60%; }
+
+section#progress {
+  width: 100%;
+  border: 1px solid #fc8; }
+  section#progress div {
+    width: 0%;
+    background-color: #fc8;
+    color: black;
+    overflow: clip;
+    text-align: center; }
+
+
+/*# sourceMappingURL=app.css.map*/
