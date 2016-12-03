@@ -9,6 +9,7 @@ int main() {
   char* code = calloc(sizeof(char), CODE_LEN);
 
   puts("what's the code?");
+  fflush(stdout);
 
   fgets(code, CODE_LEN - 1, stdin);
 
@@ -16,6 +17,7 @@ int main() {
   uint32_t nextport = (result % 8191) + 4096;
 
   printf("congratulations! %u\n", nextport);
+  fflush(stdout);
 
   return 0;
 }
