@@ -23,7 +23,7 @@ fn main() {
 
         if buf == expectation {
             let reply =
-                "nice! http://10.219.0.1:1338 should be available shortly".
+                "nice! http://10.219.2.1:1338 should be available shortly".
                 as_bytes();
 
             socket.
