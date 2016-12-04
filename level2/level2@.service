@@ -5,6 +5,6 @@ After=local-fs.target
 [Service]
 User=pi
 Group=pi
-ExecStart=/usr/bin/qemu-i386-static ./level2
+ExecStart=/usr/bin/python ./wrapper.py
 StandardInput=socket
 WorkingDirectory=/home/pi

@@ -16,7 +16,7 @@ int main() {
   uint32_t result = check(code);
   uint32_t nextport = (result % 8191) + 4096;
 
-  printf("congratulations! %u\n", nextport);
+  printf("congratulations! http://10.219.2.1:%u/\n", nextport);
   fflush(stdout);
 
   return 0;
