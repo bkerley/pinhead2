@@ -3,7 +3,7 @@ jQuery(function($) {
         e.preventDefault();
         $.ajax({url: this.href,
                 method: 'get',
-                success: function(){alert("should be open i guess")},
+                success: function(){alert("should have worked i guess")},
                 error: function(){alert("shit, something busted")}});
     });
 });
