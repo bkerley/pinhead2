@@ -32,7 +32,7 @@ fn main() {
 
             let mut starter = Command::new("sudo").
                 arg("systemctl").
-                arg("start").
+                arg("restart").
                 arg("level2.socket").
                 spawn().
                 expect("failed to start level2");
