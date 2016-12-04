@@ -1,0 +1,9 @@
+[package]
+name = "victory"
+version = "0.1.0"
+authors = ["Bryce Kerley <bkerley@brycekerley.net>"]
+
+[dependencies]
+iron = "0.4.*"
+mount = "*"
+staticfile = "*"

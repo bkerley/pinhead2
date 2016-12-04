@@ -1,0 +1,11 @@
+[Unit]
+Description=puzzlebox victory server
+
+[Service]
+User=pi
+Group=pi
+ExecStart=/home/pi/pinhead2/victory/target/release/victory
+WorkingDirectory=/home/pi/pinhead2/victory
+
+[Install]
+WantedBy=multi-user.target
