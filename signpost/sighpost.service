@@ -1,0 +1,11 @@
+[Unit]
+Description=puzzlebox signpost
+
+[Service]
+User=pi
+Group=pi
+ExecStart=/home/pi/pinhead2/signpost/target/release/signpost
+WorkingDirectory=/home/pi/pinhead2/signpost
+
+[Install]
+WantedBy=multi-user.target
