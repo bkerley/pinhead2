@@ -1,0 +1,11 @@
+[Unit]
+Description=puzzlebox web server
+
+[Service]
+User=pi
+Group=pi
+ExecStart=/home/pi/pinhead2/entry/target/release/entry
+WorkingDirectory=/home/pi/pinhead2/entry
+
+[Install]
+WantedBy=multi-user.target
