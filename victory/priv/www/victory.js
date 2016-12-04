@@ -1,6 +1,6 @@
 jQuery(function($) {
     $('a[data-ajax]').on('click', function(e) {
-        e.stopPropagation();
+        e.preventDefault();
         $.ajax({url: this.href,
                 method: 'get',
                 success: function(){alert("should be open i guess")},
