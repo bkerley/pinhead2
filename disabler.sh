@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo systemctl victory stop
-sudo systemctl victory disable
-sudo systemctl level2 stop
-sudo systemctl level2 disable
+sudo systemctl stop victory
+sudo systemctl disable victory
+sudo systemctl stop level2.socket
+sudo systemctl disable level2.socket
